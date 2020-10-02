@@ -1,0 +1,707 @@
+@font-face {
+  font-family: "univia-pro";
+  src: local("univia-pro"),
+    url(./fonts/univia-pro/univiapro-book.otf) format("opentype");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("./fonts/source-sans-pro/SourceSansPro-Regular.ttf")
+    format("truetype");
+}
+/*************************************************************************/
+/**********  CSS Styles for bigger devices < 600px   ***********/
+@media screen and (min-width: 601px) {
+  .left-sidebar {
+    border-right: 1px solid #bdc1c4;
+    position: fixed !important;
+    top: 0px;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .App div.left-sidebar {
+    background-color: #f8fafb;
+  }
+  .left-sidebar ul {
+    list-style: none;
+  }
+
+  .left-sidebar a {
+    color: #859098;
+    font-family: "Source Sans Pro", "Source Sans Pro", sans-serif !important;
+    font-size: 16px;
+  }
+  ::-moz-selection {
+    /* Code for Firefox */
+    color: #3ac1cc !important;
+  }
+  /*
+  .codeHighlightContainer code {
+    color: #c4c4c4 !important;
+  }
+  */
+  code span {
+    color: #c4c4c4 !important;
+  }
+  .left-sidebar a:hover {
+    color: #3ac1cc;
+    text-decoration: none;
+    border-bottom: 2px solid #3ac1cc;
+  }
+
+  .darkMode .left-sidebar a {
+    color: #c4c4c4;
+    font-size: 13px;
+  }
+
+  .darkMode .left-sidebar a:hover,
+  .darkMode .operationElementLink:hover {
+    color: #3ac1cc !important;
+    text-decoration: none;
+    border-bottom: 2px solid #3ac1cc;
+  }
+}
+/*************************************************************************/
+/*************************************************************************/
+/**********  CSS Styles for smaller devices < 600px   ***********/
+
+@media screen and (max-width: 600px) {
+  #introduction-text {
+    padding-bottom: 5%;
+  }
+}
+
+/*********************** End  **********************************************/
+
+.darkMode {
+  color: #c1c9d2;
+  background-color: #1b1f35 !important;
+}
+
+.darkMode nav {
+  background-color: #1b1f35 !important;
+  color: #c1c9d2;
+}
+
+a.nav-link {
+  cursor: pointer;
+}
+
+.darkMode a.nav-link {
+  color: #c1c9d2 !important;
+}
+
+.darkMode .header nav {
+  border-bottom: 1px solid #444;
+}
+
+.darkMode div.left-sidebar {
+  border-right: 1px solid #444;
+  background-color: #1b1f35;
+}
+
+.darkMode button {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.sidebar-link {
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+.darkMode ul li {
+  color: #ffffff !important;
+}
+
+.darkMode div.operation-section a {
+  color: #1c9ad6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.darkMode div.operation-section a:hover {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.operation-section {
+  border-bottom: 1px solid #bdc1c4;
+  padding-left: 50px;
+}
+
+.darkMode .operation-section {
+  border-bottom: 1px solid #444;
+}
+
+div.row div.main {
+  padding: 0px;
+}
+
+.program-selector {
+  padding-left: 42px;
+}
+
+.darkMode .program-selector * {
+  background-color: #2a2f45;
+  color: #1c9ad6;
+  border-color: #888;
+}
+
+.darkMode h6 {
+  color: #1c9ad6;
+}
+
+.App div.container-fluid div.row {
+  height: 100%;
+}
+
+.parameters button {
+  background-color: #3d4255 !important;
+  border: 0px;
+  padding-left: 14px;
+  padding-right: 14px;
+  height: 35px;
+  color: #c4c4c4;
+  font-size: 16px;
+}
+
+textarea.form-control {
+  border: 0px;
+  background-color: #50566a;
+  color: #697386;
+  padding: 20px;
+  font-size: 12px;
+  width: 600px;
+  height: 400px !important;
+  resize: none;
+  border-radius: 0px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 10px;
+  background-color: #e3e8ee;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #4f566b;
+}
+
+.darkMode textarea::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #6fb1ff;
+}
+
+#labelSampleRes {
+  margin: 0px;
+  margin-top: 10px;
+  height: 30px;
+  font-size: 13px;
+  text-align: left;
+  padding: 5px 0px 5px 10px;
+  border-radius: 5px 5px 0px 0px;
+  font-weight: 500;
+  background-color: #3d4255;
+  color: #c4c4c4;
+  width: 100%;
+}
+
+textarea:disabled {
+  margin: 10px 0px;
+  width: 100%;
+  height: auto;
+  background-color: #f7fafc !important;
+}
+
+textarea:focus {
+  background-color: #f7fafc !important;
+  color: #697386 !important;
+}
+
+div#tryOutContainer,
+.parmTxtCont {
+  background-color: #505669 !important;
+  padding-bottom: 30px;
+  width: 100%;
+  max-width: 100%;
+}
+
+button.executeBtn {
+  align-content: center;
+  border: 1px solid #c4c4c4;
+}
+
+div.executeBtnCont {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+.ParamsContainer {
+  margin: 20px;
+  border: 1px solid #4453;
+  border-radius: 5px;
+  background-color: #505669 !important;
+}
+
+.ResponseTypeC .resOpts,
+#contTypeSel {
+  display: inline;
+  width: auto;
+  min-width: 200px;
+  margin-left: 15px;
+}
+.ResponseTypeC label,
+.ParamsContainer label {
+  text-align: right;
+  color: #c4c4c4;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.ResponseTypeC {
+  border: 1px solid #445;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+}
+
+#exampleFormControlTextarea1 {
+  color: #697386;
+  margin: 10px 0px;
+  width: 100%;
+  height: auto;
+  color: #c4c4c4;
+  background-color: #3d4255 !important;
+  border: 1px solid #4453;
+  border-radius: 5px;
+}
+
+.parmTxtCont label {
+  padding-top: 18px;
+  text-align: right;
+}
+table.respDescrTable {
+  color: #697386;
+  width: 100%;
+}
+table.respDescrTable tr {
+  color: #c4c4c4;
+  border-bottom: 1px solid #697386;
+  width: 100%;
+}
+.sampleHeader {
+  color: #c4c4c4;
+  padding-top: 15px;
+}
+
+article.respDisplayer {
+  color: #697386;
+  border: 1px solid #697386;
+  border-radius: 5px;
+  padding: 10px;
+}
+.SampleResponse {
+  padding: 25px;
+  background-color: #3d4255;
+}
+.SampleResponse p {
+  font-size: 13px;
+  margin: 0px;
+}
+.SampleResponse h4 {
+  color: #697386;
+}
+
+.darkMode .SampleResponse h4 {
+  color: #c4c4c4;
+}
+.darkMode .sampleHeader {
+  color: #c4c4c4;
+}
+.darkMode .parameters button {
+  background-color: #505669;
+  color: #c4c4c4;
+}
+
+.darkMode textarea.form-control,
+.darkMode #exampleFormControlTextarea1 {
+  background-color: #4f566b !important;
+  color: #c4c4c4;
+}
+.darkMode .SampleResponse {
+  background-color: #3c4257;
+}
+
+.darkMode .parmTxtCont label,
+.darkMode .ParamsContainer label,
+.darkMode .ResponseTypeC label,
+.darkMode table.respDescrTable tr {
+  color: #c4c4c4;
+}
+
+.darkMode .executeBtn,
+.darkMode textarea:focus {
+  background-color: #4f566b !important;
+  color: #f5fbff !important;
+}
+
+.buttonAction {
+  height: 30px !important;
+  font-size: 13px !important;
+  font-weight: 500;
+  border-radius: 10px 10px 0px 0px;
+  width: 50%;
+}
+
+.darkMode p,
+.darkMode div {
+  color: #c4c4c4 !important;
+}
+#homeLinksList {
+  padding-left: 20px !important;
+  padding-bottom: 0px;
+}
+
+#sidebar-menu {
+  padding-left: 0em;
+}
+.operations-section {
+  border-top: 1px solid #c4c4c4;
+}
+.key-tittle {
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.parameters-header {
+  padding-top: 0px;
+}
+.program-title {
+  font-size: 24px !important;
+  padding-top: 5%;
+  padding-left: 0px;
+  font-family: "univia-pro", sans-serif !important;
+  font-weight: bold !important;
+}
+.darkMode .program-title {
+  color: #ffffff;
+}
+div.operationMenu ul {
+  margin-bottom: 0px;
+}
+.navbar-nav {
+  color: #859098;
+}
+div.operationMenu .operationElementLink:hover {
+  color: #4db7e8;
+  border-bottom: 2px solid #4db7e8;
+  cursor: pointer;
+}
+
+.navbar-dark .navbar-nav a.operationElementLink {
+  color: #859098;
+}
+
+.darkMode .navbar-dark .navbar-nav a.operationElementLink {
+  color: #bbb;
+}
+
+#operationLinkContainer {
+  padding-left: 50px;
+}
+
+.darkMode h1 {
+  color: #c4c4c4;
+}
+.darkMode h3 {
+  color: #c4c4c4;
+}
+.darkMode .menu,
+.darkMode .dropdown {
+  background-color: #4f566b !important;
+}
+.darkMode .menu .item {
+  border-top: 1px solid #4f566b !important;
+}
+
+.operations-tagged {
+  padding-left: 3%;
+  padding-top: 2%;
+}
+.darkMode #searchTextbox {
+  background-color: #1b1f35;
+  color: #f5fbff !important;
+}
+.darkMode :-ms-input-placeholder,
+.darkMode ::placeholder {
+  color: #f5fbff;
+}
+.darkMode ::placeholder {
+  color: #ffffff;
+}
+#searchResultContainer {
+  /* border: 1px solid #505669 ;
+  border-radius: 8px;*/
+  background-color: #ffffff;
+  z-index: 1;
+  text-align: left;
+}
+
+#searchResultContainer:hover {
+  cursor: pointer;
+}
+.darkMode #searchResultContainer {
+  /* border: 1px solid #505669 ;
+  border-radius: 8px;*/
+  background-color: #1b1f35;
+  z-index: 1;
+}
+#searchResultContainer ul {
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+.listResultElementPrimary {
+  list-style: none;
+  color: #222;
+  font-weight: 600;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 40px;
+  border-bottom: 1px solid #bdc1c4;
+}
+.listResultElementPrimary:hover,
+.listResultElementPrimary:hover h3 {
+  color: #fff !important;
+  background-color: #1c9ad6;
+}
+.listResultElementPrimary a {
+  text-decoration: none;
+}
+
+.listResultElementPrimary h3 {
+  padding-left: 0px;
+}
+.darkMode .listResultElementPrimary:hover,
+.darkMode .listResultElementPrimary:hover h3 {
+  background-color: #3d4255;
+}
+
+.listResultElementSecondary {
+  list-style: none;
+  color: #505669;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: 500;
+}
+
+.listResultElementSecondary:hover,
+.listResultElementSecondary:hover h4,
+.listResultElementSecondary:hover p,
+.listResultElementSecondary:hover a {
+  color: #fff;
+  background-color: #1c9ad6;
+  opacity: 0.8;
+}
+.darkMode .listResultElementSecondary:hover,
+.darkMode .listResultElementSecondary:hover h4,
+.darkMode .listResultElementSecondary:hover p,
+.darkMode .listResultElementSecondary:hover a {
+  background-color: #3d4255;
+  opacity: 0.8;
+}
+
+.left-sidebar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #e3e8ee;
+}
+
+.left-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #4f566b;
+}
+
+.darkMode .left-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #6fb1ff;
+}
+#collapseSidebarBtn {
+  visibility: hidden;
+  float: right;
+  display: none;
+}
+
+.property-info span {
+  font-weight: 600;
+}
+
+.operations-tagged .row {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #bdc1c4;
+}
+
+.property-request {
+  padding-bottom: 12px;
+}
+
+#sidebar-menu {
+  transition: height 2s;
+}
+
+.collapsedSection {
+  height: 0px;
+}
+
+div .program-description-paragraph a {
+  color: #3ac1cc;
+}
+div .program-description-list a {
+  color: #3ac1cc;
+}
+.darkMode ul li {
+  color: #c4c4c4 !important;
+}
+
+div .program-description-list li {
+  list-style-type: disc !important;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  list-style-position: outside;
+}
+
+.key-tittle {
+  font-size: 24px !important;
+  font-family: "univia-pro", sans-serif !important;
+  font-weight: bold !important;
+}
+.operation,
+.operationSection {
+  padding-top: 15px;
+}
+.operation-summary {
+  color: #1c9ad6;
+  padding-top: 0px;
+  font-size: 18px !important;
+  font-family: "univia-pro", sans-serif !important;
+  font-weight: bold !important;
+}
+.parameters-header,
+.returns-header {
+  color: #1c9ad6;
+  font-size: 16px !important;
+  font-family: "univia-pro", sans-serif !important;
+  font-weight: bold !important;
+}
+.returns-properties {
+  font-size: 16px !important;
+  color: #303438;
+  font-family: "Source Sans Pro", "Source Sans Pro", sans-serif;
+}
+.returns,
+.parameters {
+  padding-top: 15px;
+}
+.program-description-diagram,
+.program-description-paragraph {
+  padding-bottom: 15px;
+}
+@media screen and (max-width: 1000px), (orientation: portrait) {
+  .col {
+    min-width: auto !important;
+  }
+  .program-diagram {
+    width: 100%;
+  }
+
+  .parmTxtCont {
+    padding: 0px;
+  }
+  .ResponseTypeC label,
+  .ParamsContainer label {
+    text-align: left !important;
+  }
+  #collapseSidebarBtn {
+    visibility: visible;
+    text-align: right;
+    height: auto;
+    margin-top: 15px;
+  }
+  .footer {
+    text-align: center;
+  }
+}
+.yourtext {
+  background-image: url("./assets/images/angle_down.svg");
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: right;
+  float: left;
+}
+
+.APIMainLabel {
+  padding-top: 15px;
+  padding-left: 40px;
+  color: #1c9ad6;
+  font-size: 18px !important;
+  cursor: pointer;
+}
+.APITagMainLabel {
+  padding-top: 5px;
+  padding-left: 40px;
+  font-family: "Source Sans Pro", "Source Sans Pro", sans-serif;
+  color: #303438;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.darkMode .APITagMainLabel {
+  color: #c4c4c4;
+}
+
+.tooltipC .tooltiptextC {
+  visibility: hidden;
+  width: auto;
+  background-color: #ffffff;
+  color: #303438;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #bdc1c4;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltipC:hover .tooltiptextC {
+  visibility: visible;
+  opacity: 1;
+}
+.darkMode .tooltipC:hover .tooltiptextC {
+  visibility: visible;
+  color: white;
+  background-color: #3d4255;
+  opacity: 1;
+}
+#searchPageContainer {
+  padding-left: 15px;
+  min-height: 500px;
+}
+
+.elementCount {
+  text-align: left;
+  width: 100%;
+  font-size: 0.8em !important;
+  color: #303438;
+  font-family: "Source Sans Pro", "Source Sans Pro", sans-serif;
+}
+
+.wholeMenu {
+  padding: 0px;
+  margin-left: -20px;
+}

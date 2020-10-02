@@ -1,0 +1,10 @@
+.support-logo {
+  background-image: url("./../../assets/images/support_logo.png");
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 20%;
+}
+.left-sidebar a {
+  font-size: 14px;
+}

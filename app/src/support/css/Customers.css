@@ -1,0 +1,93 @@
+/**********  CSS Styles for medium devices > 600px   ***********/
+@media screen and (max-width: 1100px) and (min-width: 601px) {
+  #submit-button {
+    height: 35px !important;
+    width: 210px !important;
+  }
+}
+/*************************************************************************/
+/**********  CSS Styles for smaller devices < 600px   ***********/
+
+@media screen and (max-width: 600px) {
+  #submit-button {
+    height: 35px !important;
+    width: 210px !important;
+  }
+  #button-row {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #bdc1c4;
+  }
+  #right-panel,
+  #left-panel {
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-bottom: 10%;
+  }
+}
+/*********************** End  **********************************************/
+
+#last-name,
+#first-name,
+#company-name,
+#email-address,
+#message {
+  padding-top: 2%;
+  padding-left: 3%;
+  height: 4em;
+}
+
+#address,
+#phone,
+#second-phone,
+#email {
+  color: #0a4875;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 1%;
+  padding-top: 2%;
+}
+#emergency-title {
+  padding-bottom: 5%;
+  font-weight: bolder;
+  font-size: 18px !important;
+}
+#notEmergency-title {
+  padding-bottom: 5%;
+  font-weight: bolder;
+  font-size: 18px !important;
+}
+#contact-title {
+  padding-bottom: 2% !important;
+}
+#button-row {
+  padding-top: 12%;
+  padding-left: 3%;
+}
+#submit-button {
+  border-radius: 12px;
+  color: white;
+  background-color: #0a4875;
+  height: 40px;
+  width: 80%;
+  max-width: 80%;
+}
+
+.highlights {
+  color: #1c9ad6;
+}
+.custom-input {
+  border: 3px solid #0a4875;
+  width: 80%;
+  padding-left: 3%;
+  border-radius: 4px;
+}
+#location-link {
+  color: #0a4875;
+}
+#p-text {
+  padding-top: 0%;
+  padding-left: 0%;
+}
+#paragraph-columns {
+  padding-left: 0px !important;
+}

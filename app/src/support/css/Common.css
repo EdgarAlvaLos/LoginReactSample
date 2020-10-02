@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "univia-pro";
+  src: local("univia-pro"),
+    url(../../fonts/univia-pro/univiapro-book.otf) format("opentype");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../../fonts/source-sans-pro/SourceSansPro-Regular.ttf")
+    format("truetype");
+}
+/*************************************************************************/
+/**********  CSS Styles for bigger devices > 1100 px   ***********/
+@media screen and (min-width: 1101px) {
+  .main-subtitle {
+    color: white;
+    font-family: "univia-pro", sans-serif !important;
+    font-size: 18px !important;
+  }
+}
+#customers_logo,
+#merchants_logo,
+#developers_logo {
+  max-width:  200px !important;
+  width: 100%;
+  height: auto;
+  padding-top: 70px;
+}
+/*************************************************************************
+/**********  CSS Styles for bigger devices > 600px   ***********/
+@media screen and (max-width: 1100px) and (min-width: 601px) {
+  .main-subtitle {
+    color: white;
+    font-family: "univia-pro", sans-serif !important;
+    font-size: 18px !important;
+  }
+  #customers_logo,
+  #merchants_logo,
+  #developers_logo {
+    max-width:  100px;
+    width: 100%;
+    height: auto;
+    padding-top: 70px;
+  }
+}
+/*************************************************************************/
+/**********  CSS Styles for smaller devices < 600px   ***********/
+
+@media screen and (max-width: 600px) {
+  .main-subtitle {
+    color: white;
+    font-family: "univia-pro", sans-serif !important;
+    font-size: 18px !important;
+  }
+  #customers_logo,
+  #merchants_logo,
+  #developers_logo {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+  }
+
+  p {
+    font-size: 15px !important;
+  }
+}
+/*********************** End  **********************************************/
+
+/***********General css Styles ************************************/
+/************************************************************************/
+.main-title {
+  padding-top: 3%;
+  padding-bottom: 0px;
+  color: white;
+  font-weight: bolder !important;
+}
+#customers_logo,
+#merchants_logo,
+#developers_logo {
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+#customers-title,
+#merchants-title,
+#developers-title {
+  padding-left: 0px;
+  font-weight: bolder !important;
+  color: #1c9ad6;
+}
+#customers-title,
+#main-title,
+#merchants-title,
+#developers-title {
+  font-size: 24px !important;
+  font-family: "univia-pro", sans-serif !important;
+}
+.support-paragraph {
+  font-size: 16px !important;
+  font-family: "Source Sans Pro", "Source Sans Pro", sans-serif !important;
+}
+/***********End of  General properties   ************/
+/************************************************************************/
+#support-container,
+#container-customers,
+#container-merchants {
+  border-bottom: 1px solid #bdc1c4;
+}
+#container-merchants,
+#container-customers {
+  background: linear-gradient(to left, #e4e4e4c0 50%, white 50%);
+}
+#right-panel {
+  padding-left: 8%;
+  padding-right: 2%;
+}
+
+#mail-row {
+  padding-bottom: 5%;
+}
+.paragraph {
+  padding-bottom: 5%;
+}
+
+#customers_logo {
+  background-image: url("../../assets/images/customers.svg");
+}
+#merchants_logo {
+  background-image: url("../../assets/images/merchants.svg");
+}
+#developers_logo {
+  background-image: url("../../assets/images/developers.svg");
+}
+#top-menu {
+  background-color: #1c9ad6;
+  padding-bottom: 5%;
+}
+#pages-menu {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+#data-column {
+  padding-bottom: 3%;
+}
+#emergency-column {
+  padding-left: 16%;
+}
+.main-row {
+  padding-top: 1%;
+  padding-left: 7%;
+}
+
+.title-blue {
+  color: #1c9ad6;
+  font-size: 18px;
+  font-family: "Source Sans Pro", "Source Sans Pro", sans-serif !important;
+  font-weight: bolder !important;
+  padding-left: 0%;
+}
+
+#options,
+#options-2,
+#mail-row {
+  padding-top: 5%;
+}
+#options-2 {
+  padding-bottom: 5%;
+}
+#mail-row,
+#contact-row {
+  padding-top: 5%;
+  padding-left: 7%;
+  padding-right: 5%;
+}

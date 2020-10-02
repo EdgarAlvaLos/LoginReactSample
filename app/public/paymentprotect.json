@@ -1,0 +1,791 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "<div class='program-description-paragraph'>Payment Protect provides a real-time score to help you protect and grow your business. Our machine learning algorithms provide real-time, accurate scores that give you the ability to approve more good orders and block fraudsters. Payment Protect gives you the flexibility to leverage our score and insights, in conjunction with other risk signals you may have, to automatically approve, deny or route orders for additional checks as needed.</div><div class='program-description-paragraph'>Before you start, check that you have your <b><a href = '/api-credentials' target = '_blank'> API credentials</a></b> ready and you are using the proper <b>URLs</b>. Once you are ready, it is recommended that you perform a quick <b>connectivity test</b>.</div><div class='program-description-paragraph'>The main steps of the integration are:</div><div class='program-description-list'><ul> <li>Implementing the <b><a href = '/device-fingerprinting' target = '_blank'>Device Fingerprint</a> & <a href = '/behavioral-analytics' target = '_blank'>Behavioral Analytics</a></b></li> <li>Implementing the Payment & Risk Decision Request and Response <b>APIs</b></li> <li>Creating your unique <b>Risk Profile</b></li> </ul></div><div class='program-description-paragraph'>The following diagram illustrates the processes within the Payment Protect API used in the Risk Score program:</div><div class='program-description-diagram'><img class='program-diagram' alt='RiskScoreFlow' src='%PUBLIC_URL%/assets/images/RiskScoreFlow.png' /></div>",
+    "version": "1.0.0",
+    "title": "Payment Protect",
+    "termsOfService": "https://trustvesta.com/",
+    "contact": {
+      "name": "Customer Support",
+      "url": "https://trustvesta.com/",
+      "email": "vsafe.support@trustvesta.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/vSafe4_GatewayV4/GatewayV4",
+  "tags": [
+    { "name": "Required", "description": "Required API Calls" },
+    { "name": "Optional", "description": "Optional API Calls" }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/ChargePaymentFraudRequest": {
+      "post": {
+        "tags": ["Required"],
+        "summary": "ChargePaymentFraudRequest",
+        "description": "Conditional. <br /> Use the ChargePaymentFraudRequest API if you have already authorized the transaction with your gateway/acquirer and received the authorization results. Otherwise, use the <a href = ''>ChargePaymentRequest API</a>. <br /> ChargePaymentFraudRequest determines the risk associated with the transaction and checks if it can be guaranteed before deciding to settle or cancel the transaction. <br /> <b>Note:</b> This API acts as a combination of the ChargePaymentRequest and AuthResult APIs. Authorization results from your gateway/acquirer must be provided to use this API.",
+        "operationId": "ChargePaymentFraudRequest",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChargePaymentFraudRequest_Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ChargePaymentFraudRequest_Response"
+            }
+          },
+          "400": { "description": "Invalid input" }
+        },
+        "x-code-samples": {
+          "Java": "import java.io.IOException;import com.fasterxml.jackson.databind.ObjectMapper;import java.net.URI;import java.net.http.HttpClient;import java.net.http.HttpRequest;import java.net.http.HttpResponse;public class ChargePaymentFraudRequestRequest {public static HttpResponse sendRequest() throws IOException, InterruptedException {HttpClient client = HttpClient.newHttpClient();HttpRequest request = HttpRequest.newBuilder().uri(URI.create('http://api.trustvesta.com/ChargePaymentFraudRequest')).POST('AccountHolderAddressLine1':'9666 Ignacio Prairie','AccountHolderCity':'Gerardobury','AccountHolderCountryCode':'US','AccountHolderFirstName':'John','AccountHolderLastName':'Doe','AccountHolderPostalCode':'55742','AccountHolderRegion':'Vermont','RiskInformation':'<riskinformation><item productcode=\"MRC1\" description=\"Matchbox Race Car\" price=\"50.00\" quantity=\"1\" extendedprice=\"6.99\" isvirtualgood=\"false\" /></riskinformation>','AccountHolderAddressLine2':'Suite 628','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','AccountNumberIndicator':'1','AcquirerAVSResultCode':'I1','AcquirerAuthResultCode':'100','AcquirerCD':'1','AcquirerCVVResultCode':'M','Amount':'34.85','AppealEligible':'0','AutoDisposition':'0','CVV':'825','CreatedByUser':'John-Doe','ExpirationMMYY':'1230','MerchantRoutingID':'<Replace with your identification number associated with the merchant account.>','PartnerCustomerKey':'0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ','Password':'<Replace with your API Account credentials>','PaymentDescriptor':'ChargePaymentFraudRequest','PaymentSource':'WEB','ReportingInformation':'<?xml version='1.0' encoding='UTF-8'?><PartnerReportingAttributes xmlns='http://www.trustvesta.com/ReportingAttributes' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.trustvesta.com/ReportingAttributes ReportingAttributes.xsd'><Parameter01>ReportingInformation</Parameter01></PartnerReportingAttributes>','StoreCard':'0','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','WebSessionID':'P1TQ-DKZ2-0JNE-AIU4-6S12-J2V0-JXK3-KMA6I').build();return client.send(request,HttpResponse.BodyHandlers.ofString());}}",
+          "JavaScript": "var request = new XMLHttpRequest();request.open('POST','http://api.trustvesta.com/ChargePaymentFraudRequest');request.onload = function(){/*function to fetch the response*/}request.send({'AccountHolderAddressLine1':'9666 Ignacio Prairie','AccountHolderCity':'Gerardobury','AccountHolderCountryCode':'US','AccountHolderFirstName':'John','AccountHolderLastName':'Doe','AccountHolderPostalCode':'55742','AccountHolderRegion':'Vermont','RiskInformation':'<riskinformation><item productcode=\"MRC1\" description=\"Matchbox Race Car\" price=\"50.00\" quantity=\"1\" extendedprice=\"6.99\" isvirtualgood=\"false\" /></riskinformation>','AccountHolderAddressLine2':'Suite 628','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','AccountNumberIndicator':'1','AcquirerAVSResultCode':'I1','AcquirerAuthResultCode':'100','AcquirerCD':'1','AcquirerCVVResultCode':'M','Amount':'34.85','AppealEligible':'0','AutoDisposition':'0','CVV':'825','CreatedByUser':'John-Doe','ExpirationMMYY':'1230','MerchantRoutingID':'<Replace with your identification number associated with the merchant account.>','PartnerCustomerKey':'0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ','Password':'<Replace with your API Account credentials>','PaymentDescriptor':'ChargePaymentFraudRequest','PaymentSource':'WEB','ReportingInformation':'<?xml version='1.0' encoding='UTF-8'?><PartnerReportingAttributes xmlns='http://www.trustvesta.com/ReportingAttributes' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.trustvesta.com/ReportingAttributes ReportingAttributes.xsd'><Parameter01>ReportingInformation</Parameter01></PartnerReportingAttributes>','StoreCard':'0','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','WebSessionID':'P1TQ-DKZ2-0JNE-AIU4-6S12-J2V0-JXK3-KMA6I'});",
+          "C#": "using System;using System.Text;using System.Net.Http;using System.Threading.Tasks;using Newtonsoft.Json;namespace HttpClientPost{ class ChargePaymentFraudRequestRequest{static async Task Main(string[] args){var data = new StringContent('{'AccountHolderAddressLine1':'9666 Ignacio Prairie','AccountHolderCity':'Gerardobury','AccountHolderCountryCode':'US','AccountHolderFirstName':'John','AccountHolderLastName':'Doe','AccountHolderPostalCode':'55742','AccountHolderRegion':'Vermont','RiskInformation':'<riskinformation><item productcode=\"MRC1\" description=\"Matchbox Race Car\" price=\"50.00\" quantity=\"1\" extendedprice=\"6.99\" isvirtualgood=\"false\" /></riskinformation>','AccountHolderAddressLine2':'Suite 628','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','AccountNumberIndicator':'1','AcquirerAVSResultCode':'I1','AcquirerAuthResultCode':'100','AcquirerCD':'1','AcquirerCVVResultCode':'M','Amount':'34.85','AppealEligible':'0','AutoDisposition':'0','CVV':'825','CreatedByUser':'John-Doe','ExpirationMMYY':'1230','MerchantRoutingID':'<Replace with your identification number associated with the merchant account.>','PartnerCustomerKey':'0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ','Password':'<Replace with your API Account credentials>','PaymentDescriptor':'ChargePaymentFraudRequest','PaymentSource':'WEB','ReportingInformation':'<?xml version='1.0' encoding='UTF-8'?><PartnerReportingAttributes xmlns='http://www.trustvesta.com/ReportingAttributes' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.trustvesta.com/ReportingAttributes ReportingAttributes.xsd'><Parameter01>ReportingInformation</Parameter01></PartnerReportingAttributes>','StoreCard':'0','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','WebSessionID':'P1TQ-DKZ2-0JNE-AIU4-6S12-J2V0-JXK3-KMA6I'}', Encoding.UTF8, 'application/json');var url = 'https://httpbin.org/post';using var client = new HttpClient();var response = await client.PostAsync(url, data);string result = response.Content.ReadAsStringAsync().Result;}}}",
+          "CURL": " curl --header 'Content-Type: application/json' -d '{'AccountHolderAddressLine1':'9666 Ignacio Prairie','AccountHolderCity':'Gerardobury','AccountHolderCountryCode':'US','AccountHolderFirstName':'John','AccountHolderLastName':'Doe','AccountHolderPostalCode':'55742','AccountHolderRegion':'Vermont','RiskInformation':'<riskinformation><item productcode=\"MRC1\" description=\"Matchbox Race Car\" price=\"50.00\" quantity=\"1\" extendedprice=\"6.99\" isvirtualgood=\"false\" /></riskinformation>','AccountHolderAddressLine2':'Suite 628','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','AccountNumberIndicator':'1','AcquirerAVSResultCode':'I1','AcquirerAuthResultCode':'100','AcquirerCD':'1','AcquirerCVVResultCode':'M','Amount':'34.85','AppealEligible':'0','AutoDisposition':'0','CVV':'825','CreatedByUser':'John-Doe','ExpirationMMYY':'1230','MerchantRoutingID':'<Replace with your identification number associated with the merchant account.>','PartnerCustomerKey':'0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ','Password':'<Replace with your API Account credentials>','PaymentDescriptor':'ChargePaymentFraudRequest','PaymentSource':'WEB','ReportingInformation':'<?xml version='1.0' encoding='UTF-8'?><PartnerReportingAttributes xmlns='http://www.trustvesta.com/ReportingAttributes' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.trustvesta.com/ReportingAttributes ReportingAttributes.xsd'><Parameter01>ReportingInformation</Parameter01></PartnerReportingAttributes>','StoreCard':'0','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','WebSessionID':'P1TQ-DKZ2-0JNE-AIU4-6S12-J2V0-JXK3-KMA6I'}' http://api.trustvesta.com/ChargePaymentFraudRequest ",
+          "PHP": "function ChargePaymentFraudRequestRequest($url, $data = false){$curl = curl_init();curl_setopt($curl, CURLOPT_POST, 1);if ($data)curl_setopt($curl, CURLOPT_POSTFIELDS, $data);$result = curl_exec($curl);curl_close($curl);return $result;}"
+        }
+      }
+    },
+    "/ChargebackSubmit": {
+      "post": {
+        "tags": ["Required"],
+        "summary": "ChargebackSubmit",
+        "description": "Use this API to inform us of transactions for which a Risk Score had been provided and that were subsequently charged back. This is critical to ensure our Risk System has the most current data so we can provide the most accurate fraud assessment scoring. \n\n Conditional. \n Use the ChargebackSubmit API if you need to submit transactions that were charged back.",
+        "operationId": "ChargebackSubmit",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/ChargebackSubmit_Request" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/ChargebackSubmit_Response" }
+          },
+          "400": { "description": "Invalid input" }
+        },
+        "x-code-samples": {
+          "Java": "import java.io.IOException;import com.fasterxml.jackson.databind.ObjectMapper;import java.net.URI;import java.net.http.HttpClient;import java.net.http.HttpRequest;import java.net.http.HttpResponse;public class ChargebackSubmitRequest {public static HttpResponse sendRequest() throws IOException, InterruptedException {HttpClient client = HttpClient.newHttpClient();HttpRequest request = HttpRequest.newBuilder().uri(URI.create('http://api.trustvesta.com/ChargebackSubmit')).POST('OriginalTransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','ChargebackAmount':'759.83','ChargebackDate':'2020-01-01','ChargebackReasonCD':'A10','OriginalPaymentID':'3XNQCKULS','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ').build();return client.send(request,HttpResponse.BodyHandlers.ofString());}}",
+          "JavaScript": "var request = new XMLHttpRequest();request.open('POST','http://api.trustvesta.com/ChargebackSubmit');request.onload = function(){/*function to fetch the response*/}request.send({'OriginalTransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','ChargebackAmount':'759.83','ChargebackDate':'2020-01-01','ChargebackReasonCD':'A10','OriginalPaymentID':'3XNQCKULS','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'});",
+          "C#": "using System;using System.Text;using System.Net.Http;using System.Threading.Tasks;using Newtonsoft.Json;namespace HttpClientPost{ class ChargebackSubmitRequest{static async Task Main(string[] args){var data = new StringContent('{'OriginalTransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','ChargebackAmount':'759.83','ChargebackDate':'2020-01-01','ChargebackReasonCD':'A10','OriginalPaymentID':'3XNQCKULS','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}', Encoding.UTF8, 'application/json');var url = 'https://httpbin.org/post';using var client = new HttpClient();var response = await client.PostAsync(url, data);string result = response.Content.ReadAsStringAsync().Result;}}}",
+          "CURL": " curl --header 'Content-Type: application/json' -d '{'OriginalTransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ','AccountName':'<Replace with your API Account credentials>','AccountNumber':'340001234527890','ChargebackAmount':'759.83','ChargebackDate':'2020-01-01','ChargebackReasonCD':'A10','OriginalPaymentID':'3XNQCKULS','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}' http://api.trustvesta.com/ChargebackSubmit ",
+          "PHP": "function ChargebackSubmitRequest($url, $data = false){$curl = curl_init();curl_setopt($curl, CURLOPT_POST, 1);if ($data)curl_setopt($curl, CURLOPT_POSTFIELDS, $data);$result = curl_exec($curl);curl_close($curl);return $result;}"
+        }
+      }
+    },
+    "/Disposition": {
+      "post": {
+        "tags": ["Optional"],
+        "summary": "Disposition",
+        "description": "Disposition informs our platform if you settled or canceled the transaction based on its risk score. <p>If you set <code>AutoDisposition=0</code> in the <a href=''>ChargePaymentFraudRequest</a> or <a href=''>ChargePaymentRequest</a> API, you must send the Disposition API.</p> <p>If <code>AutoDisposition=1</code> do not use this API.</p>",
+        "operationId": "Disposition",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Disposition_Request" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/Disposition_Response" }
+          },
+          "400": { "description": "Invalid input" }
+        },
+        "x-code-samples": {
+          "Java": "import java.io.IOException;import com.fasterxml.jackson.databind.ObjectMapper;import java.net.URI;import java.net.http.HttpClient;import java.net.http.HttpRequest;import java.net.http.HttpResponse;public class DispositionRequest {public static HttpResponse sendRequest() throws IOException, InterruptedException {HttpClient client = HttpClient.newHttpClient();HttpRequest request = HttpRequest.newBuilder().uri(URI.create('http://api.trustvesta.com/Disposition')).POST('AccountName':'<Replace with your API Account credentials>','Amount':'20.00','DispositionComment':'Include a comment here','DispositionType':'1','Password':'<Replace with your API Account credentials>','PaymentID':'3XNQCKULS','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ').build();return client.send(request,HttpResponse.BodyHandlers.ofString());}}",
+          "JavaScript": "var request = new XMLHttpRequest();request.open('POST','http://api.trustvesta.com/Disposition');request.onload = function(){/*function to fetch the response*/}request.send({'AccountName':'<Replace with your API Account credentials>','Amount':'20.00','DispositionComment':'Include a comment here','DispositionType':'1','Password':'<Replace with your API Account credentials>','PaymentID':'3XNQCKULS','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'});",
+          "C#": "using System;using System.Text;using System.Net.Http;using System.Threading.Tasks;using Newtonsoft.Json;namespace HttpClientPost{ class DispositionRequest{static async Task Main(string[] args){var data = new StringContent('{'AccountName':'<Replace with your API Account credentials>','Amount':'20.00','DispositionComment':'Include a comment here','DispositionType':'1','Password':'<Replace with your API Account credentials>','PaymentID':'3XNQCKULS','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}', Encoding.UTF8, 'application/json');var url = 'https://httpbin.org/post';using var client = new HttpClient();var response = await client.PostAsync(url, data);string result = response.Content.ReadAsStringAsync().Result;}}}",
+          "CURL": " curl --header 'Content-Type: application/json' -d '{'AccountName':'<Replace with your API Account credentials>','Amount':'20.00','DispositionComment':'Include a comment here','DispositionType':'1','Password':'<Replace with your API Account credentials>','PaymentID':'3XNQCKULS','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}' http://api.trustvesta.com/Disposition ",
+          "PHP": "function DispositionRequest($url, $data = false){$curl = curl_init();curl_setopt($curl, CURLOPT_POST, 1);if ($data)curl_setopt($curl, CURLOPT_POSTFIELDS, $data);$result = curl_exec($curl);curl_close($curl);return $result;}"
+        }
+      }
+    },
+    "/GetSessionTags": {
+      "post": {
+        "tags": ["Required"],
+        "summary": "GetSessionTags",
+        "description": "GetSessionTags returns the WebSessionID and OrgID needed for client-side forensics and fraud detection. This is accomplished through a JavaScript library that runs in the customers' Web browser.",
+        "operationId": "GetSessionTags",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/GetSessionTags_Request" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/GetSessionTags_Response" }
+          },
+          "400": { "description": "Invalid input" }
+        },
+        "x-code-samples": {
+          "Java": "import java.io.IOException;import com.fasterxml.jackson.databind.ObjectMapper;import java.net.URI;import java.net.http.HttpClient;import java.net.http.HttpRequest;import java.net.http.HttpResponse;public class GetSessionTagsRequest {public static HttpResponse sendRequest() throws IOException, InterruptedException {HttpClient client = HttpClient.newHttpClient();HttpRequest request = HttpRequest.newBuilder().uri(URI.create('http://api.trustvesta.com/GetSessionTags')).POST('AccountName':'<Replace with your API Account credentials>','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ').build();return client.send(request,HttpResponse.BodyHandlers.ofString());}}",
+          "JavaScript": "var request = new XMLHttpRequest();request.open('POST','http://api.trustvesta.com/GetSessionTags');request.onload = function(){/*function to fetch the response*/}request.send({'AccountName':'<Replace with your API Account credentials>','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'});",
+          "C#": "using System;using System.Text;using System.Net.Http;using System.Threading.Tasks;using Newtonsoft.Json;namespace HttpClientPost{ class GetSessionTagsRequest{static async Task Main(string[] args){var data = new StringContent('{'AccountName':'<Replace with your API Account credentials>','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}', Encoding.UTF8, 'application/json');var url = 'https://httpbin.org/post';using var client = new HttpClient();var response = await client.PostAsync(url, data);string result = response.Content.ReadAsStringAsync().Result;}}}",
+          "CURL": " curl --header 'Content-Type: application/json' -d '{'AccountName':'<Replace with your API Account credentials>','Password':'<Replace with your API Account credentials>','TransactionID':'SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ'}' http://api.trustvesta.com/GetSessionTags ",
+          "PHP": "function GetSessionTagsRequest($url, $data = false){$curl = curl_init();curl_setopt($curl, CURLOPT_POST, 1);if ($data)curl_setopt($curl, CURLOPT_POSTFIELDS, $data);$result = curl_exec($curl);curl_close($curl);return $result;}"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ChargePaymentFraudRequest_Request": {
+      "type": "object",
+      "title": "ChargePaymentFraudRequest_Request",
+      "required": [
+        "AccountHolderAddressLine1",
+        "AccountHolderCity",
+        "AccountHolderCountryCode",
+        "AccountHolderFirstName",
+        "AccountHolderLastName",
+        "AccountHolderPostalCode",
+        "AccountHolderRegion",
+        "RiskInformation",
+        "AccountName",
+        "AccountNumber",
+        "AccountNumberIndicator",
+        "AcquirerCD",
+        "Amount",
+        "MerchantRoutingID",
+        "Password",
+        "PaymentSource",
+        "TransactionID"
+      ],
+      "properties": {
+        "AccountHolderAddressLine1": {
+          "type": "string",
+          "example": "9666 Ignacio Prairie",
+          "description": "The cardholder's address, line 1. Required when <code>AccountNumberIndicator=4</code> and to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "AccountHolderCity": {
+          "type": "string",
+          "example": "Gerardobury",
+          "description": "The cardholder's city. Required to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "AccountHolderCountryCode": {
+          "type": "string",
+          "example": "US",
+          "description": "The cardholder's two-character country code. Use the ISO-3166 official country codes. Required to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 2
+        },
+        "AccountHolderFirstName": {
+          "type": "string",
+          "example": "John",
+          "description": "The cardholder's first name. Required to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 20
+        },
+        "AccountHolderLastName": {
+          "type": "string",
+          "example": "Doe",
+          "description": "The cardholder's last name. Required to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 20
+        },
+        "AccountHolderPostalCode": {
+          "type": "string",
+          "example": "55742",
+          "description": "The cardholder's ZIP or postal code. Required when <code>AccountNumberIndicator=4</code> and to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "AccountHolderRegion": {
+          "type": "string",
+          "example": "Vermont",
+          "description": "The cardholder's region name. For U.S. addresses, use the two-character state code. Required to guarantee a transaction unless explicitly exempted by our platform.",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "RiskInformation": {
+          "type": "string",
+          "example": "<riskinformation><item productcode=\"MRC1\" description=\"Matchbox Race Car\" price=\"50.00\" quantity=\"1\" extendedprice=\"6.99\" isvirtualgood=\"false\" /></riskinformation>",
+          "description": "The XML string containing risk-related data. See the <a href = '/risk-information' target = '_blank'>Risk Information XML</a> and contact your Integration Specialist for details."
+        },
+        "AccountHolderAddressLine2": {
+          "type": "string",
+          "example": "Suite 628",
+          "description": "The cardholder's address, line 2.",
+          "maxLength": 30
+        },
+        "AccountName": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API username</a>.",
+          "maxLength": 32
+        },
+        "AccountNumber": {
+          "type": "string",
+          "example": "340001234527890",
+          "description": "The credit/debit card number, <a href = '/tokenization' target = '_blank'>token</a> or the BIN plus Last4 of the credit/debit card number/ApplePay Encrypted Payment Token to be authorized. If <code>AccountNumberIndicator=4</code>, then the value entered must be either 10 digits or 4 digits: BIN = First 6 digits of the credit/debit card number and Last4 = Last 4 digits of the credit/debit card number."
+        },
+        "AccountNumberIndicator": {
+          "type": "integer",
+          "format": "int32",
+          "example": "1",
+          "description": "The type of account number being sent to the API.<table><thead><tr><th>AccountNumberIndicator</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>Credit Card Number.</td></tr><tr><td>2</td><td>Temporary Token.</td></tr><tr><td>3</td><td>Permanent Token.</td></tr><tr><td>4</td><td>BIN + Last4.</td></tr><tr><td>5</td><td>ApplePay Encrypted Payment Token.</td></tr></tbody></table>",
+          "maxLength": 1
+        },
+        "AcquirerAVSResultCode": {
+          "type": "string",
+          "example": "I1",
+          "description": "The result of your acquirer's address verification system (AVS) check."
+        },
+        "AcquirerAuthResultCode": {
+          "type": "string",
+          "example": "100",
+          "description": "The result from the authorization transaction."
+        },
+        "AcquirerCD": {
+          "type": "integer",
+          "format": "int32",
+          "example": "1",
+          "description": "The acquirer used to authorize a transaction."
+        },
+        "AcquirerCVVResultCode": {
+          "type": "string",
+          "example": "M",
+          "description": "The result of your acquirer's card verification value (CVV) check."
+        },
+        "Amount": {
+          "type": "string",
+          "example": "34.85",
+          "description": "The amount of money sent for authorization.",
+          "maxLength": 12
+        },
+        "AppealEligible": {
+          "type": "boolean",
+          "example": "0",
+          "description": "Indicates if the transaction is declined by the bank and eligible for a Bank Decline appeal.<table><thead><tr><th>AppealEligible</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Not eligible</td></tr><tr><td>1</td><td>Eligible for Bank Decline Appeal</td></tr></tbody></table>"
+        },
+        "AutoDisposition": {
+          "type": "boolean",
+          "example": "0",
+          "description": "Indicates if the transaction uses one step (post-authorization) or two step (pre-authorization and post-authorization) request processing.<table><thead><tr><th>AutoDisposition</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Two step ChargePaymentFraudRequest, Disposition</td></tr><tr><td>1</td><td>One step ChargePaymentFraudRequest, Disposition</td></tr></tbody></table>"
+        },
+        "CVV": {
+          "type": "number",
+          "example": "825",
+          "description": "The credit/debit card security code (e.g., CVV2 for MC and Visa or CID for American Express). If <code>PaymentSource=PPD</code>, this field is not required.",
+          "minLength": 3,
+          "maxLength": 4
+        },
+        "CreatedByUser": {
+          "type": "string",
+          "example": "John-Doe",
+          "description": "The fraud or Revenue Assurance (RA) gateway user account name.",
+          "maxLength": 128
+        },
+        "ExpirationMMYY": {
+          "type": "number",
+          "example": "1230",
+          "description": "The credit/debit card expiration date. Required when <code>AccountNumberIndicator=4</code>. The format is MMYY.",
+          "minLength": 4,
+          "maxLength": 4
+        },
+        "MerchantRoutingID": {
+          "type": "string",
+          "example": "<Replace with your identification number associated with the merchant account.>",
+          "description": "The identification number associated with the merchant account.",
+          "maxLength": 20
+        },
+        "PartnerCustomerKey": {
+          "type": "string",
+          "example": "0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ",
+          "description": "The unique data element created to identify a customer, such as a billing account number.",
+          "maxLength": 64
+        },
+        "Password": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API password</a>.",
+          "maxLength": 64
+        },
+        "PaymentDescriptor": {
+          "type": "string",
+          "example": "ChargePaymentFraudRequest",
+          "description": "Text description of the payment for tracking purposes. Used to identify the transaction when contacting vSafe support.",
+          "maxLength": 128
+        },
+        "PaymentSource": {
+          "type": "string",
+          "example": "WEB",
+          "description": "The source of the transaction.<table><thead><tr><th>PaymentSource</th><th>Description</th></tr> </thead><tbody><tr><td>PPD</td><td>Use this to specify that the payment has been prearranged. This is used when the payment device has been validated or already had a successful charge against it. When this option is used, the CVV is not required.</td></tr><tr><td>TEL</td><td>Use this to specify that the payment has been taken over the telephone through a call center or interactive voice response (IVR) system.</td></tr><tr><td>WEB</td><td>Use this to specify that the payment has been taken over the Web, mobile Web, native mobile application, or hybrid-mobile application.</td></tr></tbody></table>",
+          "maxLength": 3
+        },
+        "ReportingInformation": {
+          "type": "string",
+          "example": "<?xml version='1.0' encoding='UTF-8'?><PartnerReportingAttributes xmlns='http://www.trustvesta.com/ReportingAttributes' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.trustvesta.com/ReportingAttributes ReportingAttributes.xsd'><Parameter01>ReportingInformation</Parameter01></PartnerReportingAttributes>",
+          "description": "The attribute-based XML blob that contains information the merchant wishes to report on for the specific transaction. The information does not affect processing. It is passed through to use in reporting and PRT search functionality.",
+          "maxLength": 3000
+        },
+        "StoreCard": {
+          "type": "boolean",
+          "example": "0",
+          "description": "Indicates if the credit/debit card number needs to be exchanged for a <a href = '/tokenization' target = '_blank'>permanent token</a>.<table><thead><tr><th>StoreCard</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Do not exchange card number for a permanent token</td></tr><tr><td>1</td><td>Exchange card number for a permanent token.</td></tr></tbody></table>"
+        },
+        "TransactionID": {
+          "type": "string",
+          "example": "SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ",
+          "description": "The identification number generated by your gateway/acquirer to track the transaction.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "WebSessionID": {
+          "type": "string",
+          "example": "P1TQ-DKZ2-0JNE-AIU4-6S12-J2V0-JXK3-KMA6I",
+          "description": "The WebSessionID generated by the <a href = ''>GetSessionTags</a> API for the current transaction. This is used for <a href = '/device-fingerprinting' target = '_blank'>device fingerprinting</a>.",
+          "maxLength": 4000
+        }
+      },
+      "description": "ChargePaymentFraudRequest_Request"
+    },
+    "ChargePaymentFraudRequest_Response": {
+      "type": "object",
+      "title": "ChargePaymentFraudRequest_Response",
+      "required": [
+        "CardFirst6",
+        "CardLast4",
+        "CardTypeCD",
+        "IsPaymentGuaranteeable",
+        "PaymentGuaranteeStatus",
+        "PaymentID",
+        "PaymentStatus",
+        "PermanentToken",
+        "ResponseCode",
+        "ResponseText",
+        "RiskDecisionCode",
+        "RiskDecisionCodeText",
+        "RiskProbabilityIndex",
+        "RiskScore"
+      ],
+      "properties": {
+        "CardFirst6": {
+          "type": "number",
+          "example": "340001",
+          "description": "Returns the first six digits of the credit/debit card number processed.",
+          "maxLength": 6
+        },
+        "CardLast4": {
+          "type": "number",
+          "example": "7890",
+          "description": "Returns the last four digits of the credit/debit card number processed.",
+          "maxLength": 4
+        },
+        "CardTypeCD": {
+          "type": "integer",
+          "format": "int32",
+          "example": "3",
+          "description": "Returns the issuer type for the credit/debit card number processed.<table><thead><tr><th>CardTypeCD</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>AAFEES</td></tr><tr><td>25</td><td>Dankort</td></tr><tr><td>27</td><td>Electron</td></tr><tr><td>3</td><td>American Express</td></tr><tr><td>34</td><td>Lasercard</td></tr><tr><td>35</td><td>Maestro</td></tr><tr><td>4</td><td>Visa</td></tr><tr><td>5</td><td>MasterCard</td></tr><tr><td>6</td><td>Discover</td></tr><tr><td>7</td><td>Diners Club</td></tr><tr><td>9</td><td>Carte Blanche</td></tr><tr><td>98</td><td>Unknown</td></tr></tbody></table>"
+        },
+        "IsPaymentGuaranteeable": {
+          "type": "boolean",
+          "example": "1",
+          "description": "Returns whether our platform can guarantee the transaction.<table><thead><tr><th>IsPaymentGuaranteeable</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Payment can not be guaranteed</td></tr><tr><td>1</td><td>Payment can be guaranteed</td></tr></tbody></table>"
+        },
+        "IsShadowPayment": {
+          "type": "boolean",
+          "example": "0",
+          "description": "Returns whether the transaction is a shadow payment (not actually guaranteed).<table><thead><tr><th>IsShadowPayment</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>This is a shadow payment and so not actually guaranteed</td></tr></tbody></table>"
+        },
+        "PartnerCustomerKey": {
+          "type": "string",
+          "example": "0GK2-CIQ5-ZA85-ZB14-2URR-GB1V-SIMJ",
+          "description": "Returns the unique data element for identifying a customer.",
+          "maxLength": 64
+        },
+        "PaymentGuaranteeStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "1",
+          "description": "Returns our platform's decision to guarantee the payment.<table><thead><tr><th>PaymentGuaranteeStatus</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>Guaranteed Payment</td></tr><tr><td>2</td><td>Non Guaranteed Payment</td></tr></tbody></table>"
+        },
+        "PaymentID": {
+          "type": "string",
+          "example": "3XNQCKULS",
+          "description": "Returns the identification number to track the transaction.",
+          "maxLength": 12
+        },
+        "PaymentStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "10",
+          "description": "Returns the result of the authorization transaction.<table><thead><tr><th>PaymentStatus</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>Bank Denied</td></tr><tr><td>10</td><td>Successful payment.</td></tr><tr><td>2</td><td>Pended</td></tr><tr><td>21</td><td>Bank Denied pending appeal</td></tr><tr><td>52</td><td>Post-Authorization completed</td></tr><tr><td>62</td><td>Post-Authorization communication error.The transaction did not complete. Re-run the transaction. If the problem persists, contact vSafe support.</td></tr></tbody></table>"
+        },
+        "PermanentToken": {
+          "type": "string",
+          "example": "340900000001016",
+          "description": "Returns a permanent token for the credit/debit card number when <code>StoreCard=1</code>.",
+          "maxLength": 19
+        },
+        "ResponseCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0",
+          "description": "Returns a 0 for success or a non-zero code for failure to process the API. See <a href = '/response-codes' target = '_blank'>Response Codes</a> for the possible non-zero code returned by the AccountNumberToPermanentToken API. <br /> Each API call returns a numeric response code. If the response code is zero, the API transaction completed successfully without errors; however, the status of the transaction may not be complete. If the response code is non-zero, an error message is included with the response code.<table><thead><tr><th>ResponseCode</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Success</td></tr><tr><td>1</td><td>General system failure</td></tr><tr><td>1001</td><td>Login failed</td></tr><tr><td>1002</td><td>Invalid credit card length</td></tr><tr><td>1003</td><td>Credit card failed Mod-10 check</td></tr><tr><td>1005</td><td>Account not active</td></tr><tr><td>1030</td><td>Provide account holder name and complete address</td></tr><tr><td>1031</td><td>Provide account holder address</td></tr><tr><td>1032</td><td>Provide account holder name</td></tr><tr><td>1033</td><td>Parameter (Amount) exceeds maximum transaction amount of (MaxTransactionAmount)</td></tr><tr><td>1034</td><td>Parameter (AutoDisposition) value is not valid for the requested transaction</td></tr><tr><td>1035</td><td>Amount must be greater than 0</td></tr><tr><td>1036</td><td>Payment not eligible for authorization results processing</td></tr><tr><td>1060</td><td>No acquirer available</td></tr><tr><td>1061</td><td>AccountNumber not found.</td></tr><tr><td>1063</td><td>Account only eligible for signature debit transactions</td></tr><tr><td>1069</td><td>Account not eligible to use provided AccountNumberIndicator value</td></tr><tr><td>1070</td><td>Unable to decrypt ApplePay encrypted payment token data</td></tr><tr><td>510</td><td>Parameter (name) is required</td></tr><tr><td>511</td><td>Parameter (name) exceeds max length of (value)</td></tr><tr><td>512</td><td>Parameter (name) is not a valid (value)</td></tr><tr><td>513</td><td>Parameter (name) cannot be undefined/null</td></tr><tr><td>514</td><td>Parameter (name) is invalid.  Valid values are (valid values)</td></tr><tr><td>521</td><td>Parameter (name) is not a valid credit card number)</td></tr></tbody></table>"
+        },
+        "ResponseText": {
+          "type": "string",
+          "example": "Success",
+          "description": "Returns a description for non-zero <a href = '/response-codes' target = '_blank'>Response Codes</a>.",
+          "maxLength": 1024
+        },
+        "RiskDecisionCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "1707",
+          "description": "Returns the decision code from the decision engine when the transaction is denied or pended.<table><thead><tr><th>RiskDecisionCode</th><th>Description</th></tr> </thead><tbody><tr><td>1701</td><td>Score exceeds risk system thresholds.</td></tr><tr><td>1702</td><td>Insufficient information for risk system to approve.</td></tr><tr><td>1703</td><td>Insufficient checking account history.</td></tr><tr><td>1704</td><td>Suspended account.</td></tr><tr><td>1705</td><td>Payment method type is not accepted.</td></tr><tr><td>1706</td><td>Duplicate transaction.</td></tr><tr><td>1707</td><td>Other payment(s) still in process.</td></tr><tr><td>1708</td><td>SSN and/or address did not pass bureau validation.</td></tr><tr><td>1709</td><td>Exceeds check amount limit.</td></tr><tr><td>1710</td><td>High risk based upon checking account history (EWS).</td></tr><tr><td>1711</td><td>Declined due to ACH regulations.</td></tr><tr><td>1712</td><td>Bounced check(s), NSFs, or account closed.</td></tr><tr><td>1713</td><td>Information provided does not match what is on file at bank.</td></tr><tr><td>1799</td><td>Declined by bank.</td></tr></tbody></table>"
+        },
+        "RiskDecisionCodeText": {
+          "type": "string",
+          "example": "Other payment(s) still in process.",
+          "description": "Returns the description of the decision code from the decision engine when the transaction is denied or pended."
+        },
+        "RiskProbabilityIndex": {
+          "type": "integer",
+          "format": "int32",
+          "example": "5",
+          "description": "Returns the level of risk associated with accepting the requested transaction.<table><thead><tr><th>RiskProbabilityIndex</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>High Risk</td></tr><tr><td>2</td><td>Mild Risk</td></tr><tr><td>3</td><td>Average</td></tr><tr><td>4</td><td>Safe</td></tr><tr><td>5</td><td>Very Safe</td></tr></tbody></table>"
+        },
+        "RiskScore": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0",
+          "description": "Returns the risk score associated with the transaction. Valid values are 0-100; the higher the score, the greater the fraud risk associated with the transaction. This score is only presented if the Fraud Score feature is enabled."
+        },
+        "RiskSystemDecision": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargePaymentFraudRequest_Response-RiskSystemDecision_Model"
+          }
+        }
+      },
+      "description": "ChargePaymentFraudRequest_Response"
+    },
+    "ChargePaymentFraudRequest_Response-RiskSystemDecision_Model": {
+      "type": "object",
+      "title": "RiskSystemDecision",
+      "properties": {
+        "Description": {
+          "type": "string",
+          "example": "Buying from safe product category",
+          "description": "The risk decision code provided by the fraud engine.",
+          "maxLength": 1024
+        },
+        "RiskSystemDecisionCD": {
+          "type": "number",
+          "example": "986",
+          "description": "The risk decision code provided by the fraud engine.",
+          "maxLength": 10
+        }
+      },
+      "description": "ChargePaymentFraudRequest_Response-RiskSystemDecision_Model"
+    },
+    "ChargebackSubmit_Request": {
+      "type": "object",
+      "title": "ChargebackSubmit_Request",
+      "required": [
+        "OriginalTransactionID",
+        "AccountName",
+        "ChargebackAmount",
+        "ChargebackDate",
+        "ChargebackReasonCD",
+        "OriginalPaymentID",
+        "Password",
+        "TransactionID"
+      ],
+      "properties": {
+        "OriginalTransactionID": {
+          "type": "string",
+          "example": "SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ",
+          "description": "The identification number generated by your gateway/acquirer associated with the chargeback.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "AccountName": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API username</a>.",
+          "maxLength": 32
+        },
+        "AccountNumber": {
+          "type": "string",
+          "example": "340001234527890",
+          "description": "Use this API to exchange a credit/debit card number for a <a href = '/tokenization' target = '_blank'>temporary token</a> that expires after 7 days.",
+          "maxLength": 19
+        },
+        "ChargebackAmount": {
+          "type": "string",
+          "example": "759.83",
+          "description": "The amount of money charged back.",
+          "maxLength": 12
+        },
+        "ChargebackDate": {
+          "type": "string",
+          "example": "2020-01-01",
+          "description": "The date of the chargeback. The format is YYYY-MM-DD.",
+          "maxLength": 10
+        },
+        "ChargebackReasonCD": {
+          "type": "string",
+          "example": "A10",
+          "description": "The bank's reason for the chargeback.",
+          "maxLength": 10
+        },
+        "OriginalPaymentID": {
+          "type": "string",
+          "example": "3XNQCKULS",
+          "description": "The identification number used to track the settlement and reconciliation.",
+          "maxLength": 12
+        },
+        "Password": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API password</a>.",
+          "maxLength": 64
+        },
+        "TransactionID": {
+          "type": "string",
+          "example": "SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ",
+          "description": "The identification number generated by your gateway/acquirer to track the transaction.",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      },
+      "description": "ChargebackSubmit_Request"
+    },
+    "ChargebackSubmit_Response": {
+      "type": "object",
+      "title": "ChargebackSubmit_Response",
+      "required": [
+        "CardFirst6",
+        "CardLast4",
+        "CardTypeCD",
+        "PaymentID",
+        "ResponseCode",
+        "ResponseText"
+      ],
+      "properties": {
+        "CardFirst6": {
+          "type": "number",
+          "example": "340001",
+          "description": "Returns the first six digits of the credit/debit card number processed.",
+          "maxLength": 6
+        },
+        "CardLast4": {
+          "type": "number",
+          "example": "7890",
+          "description": "Returns the last four digits of the credit/debit card number processed.",
+          "maxLength": 4
+        },
+        "CardTypeCD": {
+          "type": "integer",
+          "format": "int32",
+          "example": "3",
+          "description": "Returns if the card number belongs to a signature card (known signature type) or a non-signature card.<table><thead><tr><th>CardTypeCD</th><th>Description</th></tr> </thead><tbody><tr><td>3</td><td>American Express</td></tr><tr><td>4</td><td>Visa</td></tr><tr><td>5</td><td>MasterCard</td></tr><tr><td>6</td><td>Discover</td></tr><tr><td>7</td><td>Diners Club</td></tr><tr><td>98</td><td>Unknown</td></tr></tbody></table>"
+        },
+        "PaymentID": {
+          "type": "string",
+          "example": "3XNQCKULS",
+          "description": "Returns the identification number to track the transaction.",
+          "maxLength": 12
+        },
+        "ResponseCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0",
+          "description": "Returns a 0 for success or a non-zero code for failure to process the API. See <a href = '/response-codes' target = '_blank'>Response Codes</a> for the possible non-zero code returned by the AccountNumberToPermanentToken API. \n Each API call returns a numeric response code. If the response code is zero, the API transaction completed successfully without errors; however, the status of the transaction may not be complete. If the response code is non-zero, an error message is included with the response code.<table><thead><tr><th>ResponseCode</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Success</td></tr><tr><td>1</td><td>General system failure</td></tr><tr><td>1001</td><td>Login failed</td></tr><tr><td>1003</td><td>Invalid Chargeback amount: Must be greater than zero</td></tr><tr><td>1005</td><td>Account not active</td></tr><tr><td>1062</td><td>Payment not found</td></tr><tr><td>1064</td><td>Payment not eligible for this API call</td></tr><tr><td>1092</td><td>Amount larger than original authorization</td></tr><tr><td>510</td><td>Parameter (name) is required</td></tr><tr><td>511</td><td>Parameter (name) exceeds max length of (value)</td></tr><tr><td>512</td><td>Parameter (name) is not a valid (value)</td></tr><tr><td>513</td><td>Parameter (name) cannot be undefined/null</td></tr><tr><td>514</td><td>Parameter (name) is invalid.  Valid values are (valid values)</td></tr><tr><td>521</td><td>Parameter (name) is not a valid credit card number)</td></tr></tbody></table>"
+        },
+        "ResponseText": {
+          "type": "string",
+          "example": "Success",
+          "description": "Returns a description for non-zero <a href = '/response-codes' target = '_blank'>Response Codes</a>.",
+          "maxLength": 1024
+        }
+      },
+      "description": "ChargebackSubmit_Response"
+    },
+    "Disposition_Request": {
+      "type": "object",
+      "title": "Disposition_Request",
+      "required": [
+        "AccountName",
+        "Amount",
+        "DispositionType",
+        "Password",
+        "PaymentID",
+        "TransactionID"
+      ],
+      "properties": {
+        "AccountName": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API username</a>",
+          "maxLength": 32
+        },
+        "Amount": {
+          "type": "string",
+          "example": "20.00",
+          "description": "The amount of money to be confirmed for settlement. This amount must be less than or equal to the authorized amount.",
+          "maxLength": 12
+        },
+        "DispositionComment": {
+          "type": "string",
+          "example": "Include a comment here",
+          "description": "The text comments for the transaction.",
+          "maxLength": 255
+        },
+        "DispositionType": {
+          "type": "integer",
+          "format": "int32",
+          "example": "1",
+          "description": "Informs our platform if the transaction was completed or cancelled.<table><thead><tr><th>DispositionType</th><th>Description</th></tr> </thead><tbody><tr><td>1</td><td>Sale complete.</td></tr><tr><td>2</td><td>Sale cancelled.</td></tr></tbody></table>"
+        },
+        "Password": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API password</a> used to authenticate with vSafe.",
+          "maxLength": 64
+        },
+        "PaymentID": {
+          "type": "string",
+          "example": "3XNQCKULS",
+          "description": "The identification number generated to track the transaction.",
+          "maxLength": 12
+        },
+        "TransactionID": {
+          "type": "string",
+          "example": "SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ",
+          "description": "The identification number generated by your gateway/acquirer to track the transaction.",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      },
+      "description": "Disposition_Request"
+    },
+    "Disposition_Response": {
+      "type": "object",
+      "title": "Disposition_Response",
+      "required": [
+        "PaymentID",
+        "PaymentStatus",
+        "ResponseCode",
+        "ResponseText"
+      ],
+      "properties": {
+        "PaymentID": {
+          "type": "string",
+          "example": "3XNQCKULS",
+          "description": "The identification number generated to track the transaction.",
+          "maxLength": 12
+        },
+        "PaymentStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "10",
+          "description": "Returns the disposition result.<table><thead><tr><th>PaymentStatus</th><th>Description</th></tr> </thead><tbody><tr><td>10</td><td>Successful payment.</td></tr><tr><td>33</td><td>Pre-Authorization declined by merchant.</td></tr><tr><td>34</td><td>Post-Authorization declined by merchant.</td></tr></tbody></table>"
+        },
+        "ResponseCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0",
+          "description": "Returns a 0 for success or a non-zero code for failure to process the API. See <a href = '/response-codes' target = '_blank'>Response Codes</a> for the possible non-zero code returned by the Disposition API. <p>Each API call returns a numeric response code. If the response code is zero, the API transaction completed successfully without errors; however, the status of the transaction may not be complete. </p> <p>If the response code is non-zero, an error message is included with the response code.</p> <p></p><table><thead><tr><th>ResponseCode</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Success</td></tr><tr><td>1</td><td>General system failure</td></tr><tr><td>1001</td><td>Login failed</td></tr><tr><td>1005</td><td>Account not active</td></tr><tr><td>1035</td><td>Amount must be greater than 0</td></tr><tr><td>1037</td><td>Provided DispositionType and GuaranteeCD combination not supported</td></tr><tr><td>1062</td><td>Payment not found</td></tr><tr><td>1064</td><td>Payment not eligible for this API call</td></tr><tr><td>1065</td><td>Payment not eligible for requested DispositionType</td></tr><tr><td>1066</td><td>Payment not eligible for the requested guarantee code</td></tr><tr><td>1067</td><td>Parameter GuaranteeCD not applicable for the given payment</td></tr><tr><td>1090</td><td>Payment is already confirmed</td></tr><tr><td>1091</td><td>Payment not authorized</td></tr><tr><td>1092</td><td>Amount larger than original authorization</td></tr><tr><td>1093</td><td>Authorization is already expired</td></tr><tr><td>1094</td><td>Original transaction was from a different interface</td></tr><tr><td>1095</td><td>Card validation transaction cannot be confirmed</td></tr><tr><td>510</td><td>Parameter (name) is required</td></tr><tr><td>511</td><td>Parameter (name) exceeds max length of (value)</td></tr><tr><td>512</td><td>Parameter (name) is not a valid (value)</td></tr><tr><td>513</td><td>Parameter (name) cannot be undefined/null</td></tr><tr><td>514</td><td>Parameter (name) is invalid.  Valid values are (valid values)</td></tr><tr><td>521</td><td>Parameter (name) is not a valid credit card number)</td></tr></tbody></table>"
+        },
+        "ResponseText": {
+          "type": "string",
+          "example": "Success",
+          "description": "Returns a description for non-zero <a href = '/response-codes' target = '_blank'>Response Codes</a>.",
+          "maxLength": 1024
+        }
+      },
+      "description": "Disposition_Response"
+    },
+    "GetSessionTags_Request": {
+      "type": "object",
+      "title": "GetSessionTags_Request",
+      "required": ["AccountName", "Password", "TransactionID"],
+      "properties": {
+        "AccountName": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API username</a> used to authenticate with vSafe.",
+          "maxLength": 32
+        },
+        "Password": {
+          "type": "string",
+          "example": "<Replace with your API Account credentials>",
+          "description": "<a href = '/api-credentials' target = '_blank'>API password</a> used to authenticate with vSafe.",
+          "maxLength": 64
+        },
+        "TransactionID": {
+          "type": "string",
+          "example": "SCQD-CGZT-BRVS-6KE2-VANB-Q9ZB-D5GJ",
+          "description": "The identification number generated by your gateway/acquirer to track the transaction.",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      },
+      "description": "GetSessionTags_Request"
+    },
+    "GetSessionTags_Response": {
+      "type": "object",
+      "title": "GetSessionTags_Response",
+      "required": ["OrgID", "ResponseCode", "ResponseText", "WebSessionID"],
+      "properties": {
+        "OrgID": {
+          "type": "string",
+          "example": "f33plvkc",
+          "description": "Returns the organization identification number needed for the <a href = '/device-fingerprinting' target = '_blank'>device fingerprinting</a> JavaScript."
+        },
+        "ResponseCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0",
+          "description": "Returns a 0 for success or a non-zero code for failure to process the API. See <a href = '/response-codes' target = '_blank'>Response Codes</a> for the possible non-zero code returned by the GetSessionTags API. <p>Each API call returns a numeric response code. If the response code is zero, the API transaction completed successfully without errors; however, the status of the transaction may not be complete. </p> <p>If the response code is non-zero, an error message is included with the response code.</p> <p><b>Note:</b> When non-zero response codes are returned, the response fields might not be returned correctly. Review the error messages associated with non-zero response codes and take appropriate steps to resolve the error conditions.  Most of the non-zero response codes indicate a system configuration or integration issue. Before production deployment, you should resolve these issues during the testing phase.</p><table><thead><tr><th>ResponseCode</th><th>Description</th></tr> </thead><tbody><tr><td>0</td><td>Success</td></tr><tr><td>1</td><td>General system failure</td></tr><tr><td>1001</td><td>Login failed</td></tr><tr><td>1005</td><td>Account not active</td></tr><tr><td>1006</td><td>API (GetSessionTags) is not available.</td></tr><tr><td>510</td><td>Parameter (name) is required</td></tr><tr><td>511</td><td>Parameter (name) exceeds max length of (value)</td></tr></tbody></table>"
+        },
+        "ResponseText": {
+          "type": "string",
+          "example": "Success",
+          "description": " Returns a description for non-zero <a href = '/response-codes' target = '_blank'>Response Codes</a>."
+        },
+        "WebSessionID": {
+          "type": "string",
+          "example": "101_10",
+          "description": "Returns the identification number assigned to the session that is needed for the <a href = '/device-fingerprinting' target = '_blank'>device fingerprinting</a> JavaScript."
+        }
+      },
+      "description": "GetSessionTags_Response"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Vesta Icons";
+  src: url("./fonts/vesta-icons/Vesta-Icons.eot");
+  src: url("./fonts/vesta-icons/Vesta-Icons.eot?#iefix")
+      format("embedded-opentype"),
+    url("./fonts/vesta-icons/Vesta-Icons.woff") format("woff"),
+    url("./fonts/vesta-icons/Vesta-Icons.ttf") format("truetype"),
+    url("./fonts/vesta-icons/Vesta-Icons.svg#Vesta-Icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class*="icon-"]:before {
+  font-family: "Vesta Icons";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-api:before {
+  content: "\0041";
+}
+.icon-docs:before {
+  content: "\0042";
+}
+.icon-home:before {
+  content: "\0043";
+}
+.icon-login:before {
+  content: "\0044";
+}
+.icon-moon:before {
+  content: "\0045";
+}
+.icon-search:before {
+  content: "\0046";
+}
+.icon-sunshine:before {
+  content: "\0047";
+}
+.icon-support:before {
+  content: "\0048";
+}
+.icon-customers:before {
+  content: "\0049";
+}
+.icon-developers:before {
+  content: "\004a";
+}
+.icon-email:before {
+  content: "\004b";
+}
+.icon-location:before {
+  content: "\004c";
+}
+.icon-merchants:before {
+  content: "\004d";
+}
+.icon-phone:before {
+  content: "\004e";
+}
